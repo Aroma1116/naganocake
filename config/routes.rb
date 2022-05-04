@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     sessions: 'customer/sessions'
   }
   root to: 'customer/homes#top'
+  get '/customers/my_page', to: 'customer/customers#show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

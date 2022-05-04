@@ -11,6 +11,36 @@
   </head>
 
   <body>
+    <header>
+      LOGO
+      <% if customer_signed_in? %>
+        <li>
+          マイページ<!-- マイページへのパスを後で指定 -->
+        </li>
+        <li>
+          商品一覧<!-- 商品一覧へのパスを後で指定 -->
+        </li>
+        <li>
+          カート<!-- カートへのパスを後で指定 -->
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          About
+        </li>
+        <li>
+          商品一覧
+        </li>
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_customer_session_path %>
+        </li>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
