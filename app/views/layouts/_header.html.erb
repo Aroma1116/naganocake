@@ -1,0 +1,66 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+    <p class="navbar-brand p-3">
+    <% if customer_signed_in? %>
+      <%= link_to "LOGO", root_path %>
+    <% elsif admin_signed_in? %>
+      <%= link_to "LOGO", admin_path %>
+    <% else %>
+      <%= link_to "LOGO", root_path %>
+    <% end %>
+    </p>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+            <p>ようこそ、<%= current_customer.first_name %>さん！</p>
+            <li class="nav-item">
+              <%= link_to "マイページ", customers_my_page_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link text-dark">商品一覧</p><!-- 商品一覧へのパスを後で指定 -->
+            </li>
+            <li class-"nav-item">
+              <p class="nav-link text-dark">カート</p><!-- カートへのパスを後で指定 -->
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <p class="nav-link text-dark">商品一覧</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link text-dark">会員一覧</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link text-dark">注文一覧</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link text-dark">ジャンル一覧</p>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <p class="nav-link text-dark">About</p>
+            </li>
+            <li class="nav-item">
+              <p class="nav-link text-dark">商品一覧</p>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  </nav>
+</header>

@@ -4,7 +4,7 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-　　<h4>会員登録がお済でない方</h4>
+　　<h4>会員登録がお済みでない方</h4>
   <p class="col-sm-10"><%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください</p><br />
 <% end %>
 
