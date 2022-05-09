@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   }
   root to: 'customer/homes#top'
   get '/customers/my_page', to: 'customer/customers#show'
+  get '/customers/unsubscribed', to: 'customer/customers#unsubscribed'
+  patch '/customers/withdraw', to: 'customer/customers#withdraw'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
