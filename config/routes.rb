@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions'
   }
   get '/admin', to: 'admin/homes#top'
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
+  end
   #顧客用
   get '/customers/edit', to: 'customer/customers#edit', as: "customer_edit"
   patch '/customers', to: 'customer/customers#update'

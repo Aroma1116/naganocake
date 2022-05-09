@@ -1,3 +1,11 @@
+<% if @customer.errors.any? %>
+  <%= @customer.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <%= form_with model:current_customer, url:customers_path,  local: true  do |f| %>
 
   <form>
