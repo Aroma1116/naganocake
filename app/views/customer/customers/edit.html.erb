@@ -1,0 +1,56 @@
+<%= form_with model:current_customer, url:customers_path,  local: true  do |f| %>
+
+  <form>
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">名前</label>
+    <div class="col-sm-10">
+      （姓）　<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name"%>
+      （名）　<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">フリガナ</label>
+    <div class="col-sm-10">
+    （セイ）<%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %>
+    （メイ）<%= f.text_field :last_kana, autofocus: true, autocomplete: "last_kana" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">郵便番号（ハイフンなし）</label>
+    <div class="col-sm-10">
+    　　　　<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">住所</label>
+    <div class="col-sm-10">
+    　　　　<%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">電話番号（ハイフンなし）</label>
+    <div class="col-sm-10">
+    　　　　<%= f.text_field :tel_number, autofocus: true, autocomplete: "tel_number" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">メールアドレス</label>
+    <div class="col-sm-10">
+    　　　　<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+    　　<%= f.submit "編集内容を保存する", class: "btn btn-sm-10 btn-success" %>
+    </div>
+  </div>
+</form>
+
+<% end %>
