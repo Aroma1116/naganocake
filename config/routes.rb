@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
   #顧客用
   get '/customers/edit', to: 'customer/customers#edit', as: "customer_edit"
@@ -19,5 +20,8 @@ Rails.application.routes.draw do
   get '/customers/my_page', to: 'customer/customers#show'
   get '/customers/unsubscribed', to: 'customer/customers#unsubscribed'
   patch '/customers/withdraw', to: 'customer/customers#withdraw'
+  namespace :customer do
+    resources :items, only: [:index, :show]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
