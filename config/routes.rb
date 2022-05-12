@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/homes#top'
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
   end
   #顧客用
   get '/customers/edit', to: 'customer/customers#edit', as: "customer_edit"

@@ -1,0 +1,24 @@
+<h2>ジャンル一覧・追加</h2>
+<%= form_with model: @genre, url:admin_genres_path, local: true do |f| %>
+  <div class="row mb-3">
+    <label class="col-sm-2 col-form-label">   ジャンル名</label>
+    <div class="col-sm-10">
+    <%= f.text_field:genre, autofocus: true, autocomplete: "genre" %> <%= f.submit "新規登録", class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ジャンル</th>
+      </tr>
+    </thead>
+    <% @genres.each do |genre| %>
+    <tbody>
+      <tr>
+        <td><%= genre.genre %> <%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
