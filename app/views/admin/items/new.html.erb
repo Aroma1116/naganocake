@@ -1,54 +1,63 @@
-<h2>商品新規登録</h2>
-
-<%= form_with model: @item, url: admin_items_path do |f| %>
-  <div class="row mb-3">
-    <label class="col-sm-2 col-form-label">商品画像</label>
-    <div class="col-sm-10">
-    <%= f.file_field :item_image, accept: "image/*" %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label class="col-sm-2 col-form-label">商品名</label>
-    <div class="col-sm-10">
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label class="col-sm-2 col-form-label">商品説明</label>
-    <div class="col-sm-10">
-    <%= f.text_field :introduction, autofocus: true, autocomplete: "introduction" %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label class="col-sm-2 col-form-label">ジャンル</label>
-    <div class="col-sm-10">
-    <%= f.select :genre_id, @genres.map{ |genre| [genre.genre, genre.id] } %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label class="col-sm-2 col-form-label">税抜価格</label>
-    <div class="col-sm-10">
-    <%= f.text_field :price, autofocus: true, autocomplete: "price" %>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label class="col-sm-2 col-form-label">販売ステータス</label>
-    <%= f.radio_button :purchase_status, :true %>
-    <%= f.label :purchase_status, "販売中", {value: :true, style: "display: inline-block;"} %>
-  　<%= f.radio_button :purchase_status, :false %>
-  　<%= f.label :purchase_status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
-    <div class="col-sm-10">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col-sm-2">
-    <%= f.submit "新規登録", class: "btn btn-sm-10 btn-success" %>
-    </div>
-  </div>
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
+<h2>商品新規登録</h2>
+<div class="container">
+  <div class="row justify-content-center">
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+    <div class="row mb-3">
+      <label class="col-form-label">商品画像</label>
+      <div class="col-sm-10">
+      <%= f.file_field :item_image, accept: "image/*" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-form-label">商品名</label>
+      <div class="col-sm-10">
+      　<%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-form-label">商品説明</label>
+      <div class="col-sm-10">
+      <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", rows:"5" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-form-label">ジャンル</label>
+      <div class="col-sm-10">
+      <%= f.select :genre_id, @genres.map{ |genre| [genre.genre, genre.id] } %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-form-label">税抜価格</label>
+      <div class="col-sm-10">
+      <%= f.text_field :price, autofocus: true, autocomplete: "price" %>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-form-label">販売ステータス</label>
+      <%= f.radio_button :purchase_status, :true %>
+      <%= f.label :purchase_status, "販売中", {value: :true, style: "display: inline-block;"} %>
+  　   <%= f.radio_button :purchase_status, :false %>
+  　   <%= f.label :purchase_status, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-sm-2">
+      <%= f.submit "新規登録", class: "btn btn-sm-10 btn-success" %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

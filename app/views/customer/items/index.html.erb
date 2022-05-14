@@ -1,20 +1,17 @@
 <h2>商品一覧</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container">
+  <div class="row">
     <% @items.each do |item| %>
-    <tr>
-      <td><%= image_tag item.get_item_image(100,100) %></td>
-      <td><%= item.name %></td>
-      <td><%= item.price %></td>
-    </tr>
+    <div class-"col-md-4">
+      <ul class="card">
+        <p><%= image_tag item.get_item_image(100,100) %></p>
+        <div class="card-body text-center">
+          <h4 class="card-title"><%= item.name %></h4>
+          <h4 class="card-text">￥<%= item.price %></h4>
+        </div>
+      </ul>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

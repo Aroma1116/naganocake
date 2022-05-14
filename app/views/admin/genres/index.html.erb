@@ -1,3 +1,11 @@
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <h2>ジャンル一覧・追加</h2>
 <%= form_with model: @genre, url:admin_genres_path, local: true do |f| %>
   <div class="row mb-3">
@@ -8,7 +16,7 @@
   </div>
 <% end %>
 
-  <table>
+  <table class="table table-bordered" style="width: 45%">
     <thead>
       <tr>
         <th>ジャンル</th>
@@ -17,7 +25,8 @@
     <% @genres.each do |genre| %>
     <tbody>
       <tr>
-        <td><%= genre.genre %> <%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-success' %></td>
+        <td><%= genre.genre %>
+        <p class="text-right"><%= link_to "編集する", edit_admin_genre_path(genre), class: 'btn btn-success' %></p></td>
       </tr>
     </tbody>
     <% end %>
