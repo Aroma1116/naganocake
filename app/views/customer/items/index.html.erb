@@ -5,11 +5,13 @@
     <% @items.each do |item| %>
     <div class-"col-md-4">
       <ul class="card">
+        <%= link_to customer_item_path(item) do %>
         <p><%= image_tag item.get_item_image(100,100) %></p>
         <div class="card-body text-center">
           <h4 class="card-title"><%= item.name %></h4>
           <h4 class="card-text">￥<%= item.price %></h4>
         </div>
+        <% end %>
       </ul>
     </div>
     <% end %>

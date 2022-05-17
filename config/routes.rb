@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   patch '/customers/withdraw', to: 'customer/customers#withdraw'
   namespace :customer do
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :destroy]
+    delete '/destroy_all', to: 'cart_items#destroy_all'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
