@@ -10,11 +10,13 @@
   <div class="row justify-content-center">
     <table class="table table-bordered" style="width: 80%">
     <thead>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th></th>
+      <tr class="table-secondary">
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
     <% @cart_items.each do |cart_item| %>
@@ -28,17 +30,28 @@
           <% end %>
         </td>
         <td><%= cart_item.subtotal %></td>
-        <td><%= link_to "削除する", customer_cart_item_path(cart_item), method: :delete %></td>
+        <td><%= link_to "削除する", customer_cart_item_path(cart_item), method: :delete, class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
     </tbody>
     </table>
   </div>
   <div class="row">
-    <div class="col-sm-9"></div>
-    <div class="col-sm-3">
-      合計金額¥<%= @total.round.to_s(:delimited)%>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-6"><%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %></div>
+    <div class="col-sm-4">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="table-secondary">合計金額</td>
+            <td>¥<%= @total.round.to_s(:delimited)%></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+  <div class="row justify-content-center">
+    <div class="btn btn-success">情報入力に進む</div>
+  </div>
 </div>
-<%= link_to "買い物を続ける", root_path, class: 'btn btn-primary' %>
+
