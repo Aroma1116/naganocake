@@ -1,6 +1,15 @@
 <h2>配送先登録/一覧</h2>
 
-<%= form_with model:@address, local :true do %>
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model:@address, url: customer_addresses_path do |f| %>
 
 <div class="row mb-3">
   <label class="col-sm-2 col-form-label">郵便番号（ハイフンなし）</label>
@@ -30,3 +39,30 @@
 </div>
 
 <% end %>
+<div class="container">
+  <div class="row">
+    <table class="table table-bordered" style="width: 80%">
+    <thead>
+      <tr class="table-secondary">
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+        <td>
+          <%= link_to "編集する", edit_customer_address_path(address), class: 'btn btn-success' %>
+          <%= link_to "削除する", customer_path(address), method: :delete, class: 'btn btn-danger', "data-confirm" => "本当に削除しますか？" %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+  </div>
+</div>

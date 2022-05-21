@@ -19,7 +19,7 @@
           <% if customer_signed_in? %>
             <p>ようこそ、<%= current_customer.first_name %>さん！</p>
             <li class="nav-item">
-              <%= link_to "マイページ", customers_my_page_path, class: 'nav-link text-dark' %>
+              <%= link_to "マイページ", customer_my_page_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "商品一覧", customer_items_path, class: 'nav-link text-dark' %>

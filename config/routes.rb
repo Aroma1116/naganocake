@@ -15,16 +15,20 @@ Rails.application.routes.draw do
     sessions: 'customer/sessions'
   }
   root to: 'customer/homes#top'
-  get '/customers/my_page', to: 'customer/customers#show'
-  get '/customers/edit', to: 'customer/customers#edit', as: "customer_edit"
-  patch '/customers', to: 'customer/customers#update'
-  get '/customers/unsubscribed', to: 'customer/customers#unsubscribed'
-  patch '/customers/withdraw', to: 'customer/customers#withdraw'
   namespace :customer do
+    get '/my_page', to: 'customers#show'
+    get '/edit', to: 'customers#edit', as: "customer_edit"
+    patch '/customers', to: 'customers#update'
+    get '/unsubscribed', to: 'customers#unsubscribed'
+    patch '/withdraw', to: 'customers#withdraw'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     delete '/destroy_all', to: 'cart_items#destroy_all'
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:index, :create, :edit, :update]
+    delete '/address/:id', to: 'addresses#destroy'
   end
+
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
