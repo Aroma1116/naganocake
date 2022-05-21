@@ -9,3 +9,11 @@ Admin.create!(
     email: "a@a",
     password: "aaaaaa"
 )
+
+Item.create(
+    genre_id: 3,
+    name: "チョコレートケーキ",
+    introduction: "たっぷりのチョコが乗っています",
+    price: 1250,
+    purchase_status: true
+)
