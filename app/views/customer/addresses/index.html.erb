@@ -1,0 +1,32 @@
+<h2>配送先登録/一覧</h2>
+
+<%= form_with model:@address, local :true do %>
+
+<div class="row mb-3">
+  <label class="col-sm-2 col-form-label">郵便番号（ハイフンなし）</label>
+  <div class="col-sm-10">
+  <%= f.text_field:postal_code, autofocus: true, autocomplete: "postal_code" %>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <label class="col-sm-2 col-form-label">住所</label>
+  <div class="col-sm-10">
+  <%= f.text_field:address, autofocus: true, autocomplete: "address" %>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <label class="col-sm-2 col-form-label">宛名</label>
+  <div class="col-sm-10">
+  <%= f.text_field:name, autofocus: true, autocomplete: "name" %>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-10">
+  <%= f.submit "新規登録", class: 'btn btn-success' %>
+  </div>
+</div>
+
+<% end %>
