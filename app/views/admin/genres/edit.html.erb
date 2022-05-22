@@ -1,13 +1,6 @@
 <h2>ジャンル編集</h2>
 
-<% if @genre.errors.any? %>
-  <%= @genre.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @genre.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'layouts/error', obj:@genre %>
 
 <%= form_with model: @genre, url:admin_genre_path, local: true do |f| %>
 

@@ -1,12 +1,5 @@
 <h2>配送先編集</h2>
-<% if @address.errors.any? %>
-  <%= @address.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @address.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'layouts/error', obj:@address %>
 <%= form_with model:@address, url: customer_address_path, local: true do |f| %>
 
 <div class="row mb-3">
