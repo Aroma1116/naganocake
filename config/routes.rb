@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :customer do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-  end
   #管理者用
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: 'admin/sessions'
@@ -31,7 +26,12 @@ Rails.application.routes.draw do
     delete '/destroy_all', to: 'cart_items#destroy_all'
     resources :addresses, only: [:index, :create, :edit, :update]
     delete '/address/:id', to: 'addresses#destroy'
+    resources :orders, only: [:new, :index]
+    post '/orders/confirm', to: 'orders#confirm'
+    post '/orders', to: 'orders#create', as: 'order_create'
+    get '/orders/complete', to: 'orders#complete'
   end
+
 
 
 
