@@ -10,16 +10,16 @@ Admin.create!(
     password: "aaaaaa"
 )
 
+Genre.create(
+    genre: "ケーキ"
+)
+
 Item.create(
     genre_id: 1,
     name: "チョコレートケーキ",
     introduction: "たっぷりのチョコが乗っています",
     price: 1250,
     purchase_status: true
-)
-
-Genre.create(
-    genre: "ケーキ"
 )
 
 
