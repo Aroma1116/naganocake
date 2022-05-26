@@ -18,6 +18,11 @@ Item.create(
     purchase_status: true
 )
 
+Genre.create(
+    genre: "ケーキ"
+)
+
+
 Order.create(
     postage: 800
 )
