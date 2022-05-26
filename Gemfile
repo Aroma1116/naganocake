@@ -62,3 +62,5 @@ gem 'image_processing', '~> 1.2'
 gem 'pry-byebug', group: :development
 
 gem 'enum_help'
+
+gem 'rails-i18n', '~> 6.0'

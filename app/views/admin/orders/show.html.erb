@@ -1,0 +1,38 @@
+<h2>注文履歴詳細</h2>
+
+<h3>購入者</h3><%= @order.customer.first_name %><%= @order.customer.last_name %>
+<h3>注文日</h3><%= @order.created_at %>
+<h3>配送先</h3><%= @order.shipping_address_display %>
+<h3>支払方法</h3><%= @order.method_i18n %>
+<h3>注文ステータス</h3><%= form_with model: @order, url: admin_orders_update_path, method: :patch do |f| %>
+                         <%= f.select :order_status, *[Order.order_statuses.keys], { selected: @order.order_status_i18n } %>
+                         <%= f.submit "更新", class: 'btn btn-success' %>
+                       <% end %>
+
+<table class="table table-bordered" style="width: 80%">
+  <thead>
+    <tr class="table-secondary">
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @order_items.each do |order_item| %>
+    <tr>
+      <td><%= order_item.item.name %></td>
+      <td><%= order_item.item.with_tax_price %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.subtotal_order %></td>
+      <td>
+        <%= form_with model: @orderdetail, url: admin_orderdetails_path(order_item), method: :patch do |f| %>
+          <%= f.select :productiion_status, *[OrderDetail.production_statuses.keys], { selected: order_item.production_status_i18n } %>
+          <%= f.submit "更新", class: 'btn btn-success' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

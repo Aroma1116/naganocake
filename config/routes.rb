@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :orders, only: [:index, :show]
+    patch '/orders/:id', to: 'orders#update', as: "orders_update"
+    patch '/order_details/:id', to: 'order_details#update', as: "orderdetails"
   end
   #顧客用
   devise_for :customers, skip: [:passwords,], controllers: {

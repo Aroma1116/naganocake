@@ -4,9 +4,9 @@
 <div class="row mb-3">
   <label class="col-form-label">支払方法</label>
     <%= f.radio_button :method, Order.methods.key(0) %>
-    <%= f.label :method, Order.methods_i18n[:credit_card]%>
+    <%= f.label :method, Order.methods.key(0) %>
     <%= f.radio_button :method, Order.methods.key(1) %>
-    <%= f.label :method, Order.methods_i18n[:transfer]%>
+    <%= f.label :method, Order.methods.key(1)%>
 </div>
 
 <div class="row mb-3">
