@@ -11,7 +11,7 @@ Admin.create!(
 )
 
 Item.create(
-    genre_id: 3,
+    genre_id: 1,
     name: "チョコレートケーキ",
     introduction: "たっぷりのチョコが乗っています",
     price: 1250,
