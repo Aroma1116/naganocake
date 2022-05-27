@@ -1,30 +1,50 @@
+<div class="contaner">
+
 <h2 class="text-center">注文情報入力</h2>
 
 <%= form_with model: @order, url: customer_orders_confirm_path do |f| %>
-<div class="row mb-3">
+<div class="d-flex flex-column" style="height: 100px;">
   <label class="col-form-label">支払方法</label>
-    <%= f.radio_button :method, Order.methods.key(0) %>
-    <%= f.label :method, Order.methods.key(0) %>
-    <%= f.radio_button :method, Order.methods.key(1) %>
-    <%= f.label :method, Order.methods.key(1)%>
+    <div class="flex">
+      <%= f.radio_button :method, Order.methods.key(0) %>
+      <%= f.label :method, Order.methods.key(0) %>
+    </div>
+    <div class="flex">
+      <%= f.radio_button :method, Order.methods.key(1) %>
+      <%= f.label :method, Order.methods.key(1)%>
+    </div>
 </div>
 
-<div class="row mb-3">
+<div class="d-flex flex-column" style="height: 400px;">
   <label class="col-form-label">お届け先</label>
-    <%= f.radio_button :address_option,0 %>
-    ご自身の住所<%= f.label :address_id, current_customer.address_display%>
-
-    <%= f.radio_button :address_option,1 %>
-    登録済み住所から選択<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
-    <%= f.radio_button :address_option,2 %>
-    新しい配送先
-
-    <%= f.label :shipping_postal_code, "郵便番号" %>
-    <%= f.text_field :shipping_postal_code, autofocus: true, autocomplete: "shipping_postal_code" %>
-    <%= f.label :shipping_address, "住所" %>
-    <%= f.text_field :shipping_address, autofocus: true, autocomplete: "shipping_address" %>
-    <%= f.label :shipping_name, "宛名" %>
-    <%= f.text_field :shipping_name, autofocus: true, autofocus: "shipping_name" %>
+    <div class="flex">
+      <%= f.radio_button :address_option,0 %>
+      ご自身の住所<br>
+      <%= f.label :address_id, current_customer.address_display%>
+    </div>
+    <div class="flex">
+      <%= f.radio_button :address_option,1 %>
+      登録済み住所から選択<br>
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    </div>
+    <div class="flex">
+      <%= f.radio_button :address_option,2 %>
+      新しい配送先
+    <div class="flex">
+      <%= f.label :shipping_postal_code, "郵便番号" %>
+      <%= f.text_field :shipping_postal_code, autofocus: true, autocomplete: "shipping_postal_code" %>
+    </div>
+    <div class="flex">
+      <%= f.label :shipping_address, "住所" %>
+      　　<%= f.text_field :shipping_address, autofocus: true, autocomplete: "shipping_address" %>
+    </div>
+    <div class="flex">
+      <%= f.label :shipping_name, "宛名" %>
+      　　<%= f.text_field :shipping_name, autofocus: true, autofocus: "shipping_name" %>
+    </div>
 </div>
-<%= f.submit "確認画面に進む", class: 'btn btn-success' %>
-<% end %>
+<div class="center-block">
+  <%= f.submit "確認画面に進む", class: 'btn btn-primary' %>
+  <% end %>
+</div>
+</div>
