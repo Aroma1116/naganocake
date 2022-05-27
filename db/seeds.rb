@@ -21,8 +21,3 @@ Item.create(
     price: 1250,
     purchase_status: true
 )
-
-
-Order.create(
-    postage: 800
-)
