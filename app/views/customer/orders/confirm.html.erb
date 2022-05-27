@@ -2,7 +2,7 @@
 
 <div class="contaner">
 <div class="row justify-content-center">
-  <table class="table table-bordered" style="width: 80%">
+  <table class="table table-bordered" style="width: 65%">
     <thead>
       <tr class="table-secondary">
         <th>商品名</th>
@@ -22,7 +22,7 @@
       <% end %>
     </tbody>
   </table>
-  <table class="table">
+  <table class="table" style="width: 20%">
     <tbody>
       <tr>
         <td class="table-secondary">送料</td>
@@ -39,18 +39,19 @@
     </tbody>
   </table>
 </div>
+
+  <div class="row">
+    <div class="col-md-8">支払方法<%= @order.method_i18n %></div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">お届け先<%= @order.shipping_address_display %></div>
+  </div>
 </div>
-
-<h2>支払方法</h2>
-<%= @order.method_i18n %>
-<h2>お届け先</h2>
-<%= @order.shipping_postal_code %><%= @order.shipping_address %><%= @order.shipping_name %>
-
 <%= form_with model: @order, url: customer_order_create_path, method: :post do |f| %>
 <%= f.hidden_field :shipping_postal_code, :value => @order.shipping_postal_code %>
 <%= f.hidden_field :shipping_address, :value => @order.shipping_address %>
 <%= f.hidden_field :shipping_name, :value => @order.shipping_name %>
 <%= f.hidden_field :method, :value => @order.method %>
 <%= f.hidden_field :item_amount, :value => @order.postage+@total %>
-<%= f.submit "注文を確定する", class: "btn btn-success" %>
+<div class="text-center"><%= f.submit "注文を確定する", class: "btn btn-success" %></div>
 <% end %>

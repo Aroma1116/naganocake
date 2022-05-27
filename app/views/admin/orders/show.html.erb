@@ -1,24 +1,30 @@
 <div class="contaner">
 
   <h2>注文履歴詳細</h2>
-  <div class="row">
-    <h3>購入者</h3><%= @order.customer.first_name %><%= @order.customer.last_name %>
+  <div class="row col-md-8">
+    <h3>購入者</h3>
+    <div class="col-sm-10"><%= @order.customer.first_name %><%= @order.customer.last_name %></div>
   </div>
-  <div class="row">
-    <h3>注文日</h3><%= @order.created_at %>
+  <div class="row col-md-8">
+    <h3>注文日</h3>
+    <div class="col-sm-10"><%= @order.created_at %></div>
   </div>
-  <div class="row">
-    <h3>配送先</h3><%= @order.shipping_address_display %>
+  <div class="row col-md-8">
+    <h3>配送先</h3>
+    <div class="col-sm-10"><%= @order.shipping_address_display %></div>
   </div>
-  <div class="row">
-    <h3>支払方法</h3><%= @order.method_i18n %>
+  <div class="row col-md-8">
+    <h3>支払方法</h3>
+    <div class="col-sm-10"><%= @order.method_i18n %></div>
   </div>
-  <div class="row">
+  <div class="row col-md-8">
     <h3>注文ステータス</h3>
-    <%= form_with model: @order, url: admin_orders_update_path, method: :patch do |f| %>
-      <%= f.select :order_status, *[Order.order_statuses.keys], { selected: @order.order_status_i18n } %>
-      <%= f.submit "更新", class: 'btn btn-success' %>
-    <% end %>
+    <div class="col-sm-10">
+      <%= form_with model: @order, url: admin_orders_update_path, method: :patch do |f| %>
+        <%= f.select :order_status, *[Order.order_statuses.keys], { selected: @order.order_status_i18n } %>
+        <%= f.submit "更新", class: 'btn btn-success' %>
+      <% end %>
+    </div>
   </div>
 
   <div class="row">
