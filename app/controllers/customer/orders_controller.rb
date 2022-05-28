@@ -3,9 +3,6 @@ class Customer::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def create
-  end
-
   def confirm
     @cart_items = CartItem.all
     @total = @cart_items.inject(0) { |sum, cart_item| sum +  cart_item.subtotal }
