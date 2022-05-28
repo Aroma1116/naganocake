@@ -1,4 +1,6 @@
 class Customer::OrdersController < ApplicationController
+  before_action :correct_customer, only: [:new]
+
   def new
     @order = Order.new
   end
@@ -22,7 +24,7 @@ class Customer::OrdersController < ApplicationController
       @order = Order.new(order_params)
       @order.save
     end
-    @order.postage = 500
+    @order.postage = 800
   end
 
   def create
@@ -58,5 +60,12 @@ class Customer::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:customer_id, :method, :shipping_postal_code, :shipping_address, :shipping_name, :item_amount)
+  end
+
+  def correct_customer
+    @cart_items = CartItem.all
+    unless @cart_items.exists?
+      redirect_to customer_cart_items_path, alert: 'カートに商品を追加してください'
+    end
   end
 end
