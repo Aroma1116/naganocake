@@ -1,10 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.all
-    @orders.each do |order|
-      @order_details = order.order_details
-    end
-    @total = @order_details.inject(0) { |sum, order_detail| sum +  order_detail.quantity }
   end
 
   def show
@@ -18,6 +14,13 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
+    @order_details = @order.order_details
+    if @order.order_status == "入金確認"
+      @order_details.each do |order_detail|
+        order_detail.production_status = "製作待ち"
+        order_detail.save
+      end
+    end
     redirect_to  admin_order_path(@order)
   end
 
