@@ -23,6 +23,9 @@ class Customer::OrdersController < ApplicationController
     elsif params[:order][:address_option] == "2"
       @order = Order.new(order_params)
       @order.save
+    else
+      flash[:alert] = "お届け先を選んでください"
+      render :new
     end
     @order.postage = 800
   end

@@ -46,7 +46,7 @@ class Customer::CartItemsController < ApplicationController
 
   def correct_customer
     unless customer_signed_in?
-      redirect_to customer_items_path
+      redirect_to customer_items_path, alert: "ログインしてください"
     end
   end
 
