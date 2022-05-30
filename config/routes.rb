@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show]
     patch '/orders/:id', to: 'orders#update', as: "orders_update"
     patch '/order_details/:id', to: 'order_details#update', as: "orderdetails"
-    get '/searches', to: 'items#searches'
   end
   #顧客用
   devise_for :customers, skip: [:passwords,], controllers: {
