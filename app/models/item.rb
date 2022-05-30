@@ -20,4 +20,16 @@ class Item < ApplicationRecord
   def with_tax_price
     (price * 1.1).floor
   end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Item.where(name: content)
+    elsif method == 'forward'
+      Item.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Item.where('name LIKE ?', '%' + content)
+    else
+      Item.where('name LIKE ?', '%' + content + '%')
+    end
+  end
 end

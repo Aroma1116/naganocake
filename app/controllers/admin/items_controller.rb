@@ -1,6 +1,15 @@
 class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all
+    @model = params[:model]
+    @content = params[:content]
+    @method = params[:method]
+    if @model == "Item"
+      @records = Item.search_for(@content, @method)
+      if @records.count == 0
+        redirect_to admin_items_path, alert: "該当なし"
+      end
+    end
   end
 
   def new
@@ -21,6 +30,7 @@ class Admin::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
+
 
   def edit
   end

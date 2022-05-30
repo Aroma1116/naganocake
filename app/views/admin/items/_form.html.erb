@@ -1,0 +1,8 @@
+<% if admin_signed_in? %>
+  <%= form_with url: admin_items_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content, placeholder: "Search"%>
+    <%= f.hidden_field :model, :value => Item %>
+    <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "pertial"}) %>
+    <%= f.submit "検索" %>
+  <% end %>
+<% end %>

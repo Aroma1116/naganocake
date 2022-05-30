@@ -1,6 +1,5 @@
-<h2>商品一覧</h2>
-
-<%= link_to "商品新規登録", new_admin_item_path %>
+<% unless items.nil? %>
+<h2 class="text-center">検索結果</h2>
 <div class="container">
   <div class="row justify-content-center">
     <table class="table" style="width: 80%">
@@ -14,7 +13,8 @@
         </tr>
       </thead>
       <tbody>
-      <% @items.each do |item| %>
+
+      <% items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
           <td><%= item.name %></td>
@@ -29,8 +29,11 @@
           </td>
         </tr>
       <% end %>
+      <% end %>
       </tbody>
     </table>
   </div>
+  <% if items.nil? %>
+    <h2><div class="row justify-content-center"><%= alert %></div></h2>
+  <% end %>
 </div>
-  <%= render 'search', items:@records %>
