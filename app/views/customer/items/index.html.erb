@@ -1,19 +1,38 @@
 <h2>商品一覧</h2>
 <h4><%= alert %></h4>
-<div class="container">
+<div class="container px-5 px-sm-0">
   <div class="row">
-    <% @items.each do |item| %>
-    <div class-"col-md-4">
-      <ul class="card">
-        <%= link_to customer_item_path(item) do %>
-        <p><%= image_tag item.get_item_image(100,100) %></p>
-        <div class="card-body text-center">
-          <h4 class="card-title"><%= item.name %></h4>
-          <h4 class="card-text">￥<%= item.price %></h4>
-        </div>
-        <% end %>
-      </ul>
+    <div class="col-md-3">
+      <%= render 'customer/genres/genres', genres: @genres %>
     </div>
+    <% if @params %>
+      <% @genre.items.each do |item| %>
+      <div class-"col-md-8 offset-md-1">
+        <ul class="card">
+          <%= link_to customer_item_path(item) do %>
+          <p><%= image_tag item.get_item_image(100,100) %></p>
+          <div class="card-body text-center">
+            <h4 class="card-title"><%= item.name %></h4>
+            <h4 class="card-text">￥<%= item.price %></h4>
+          </div>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    <% else %>
+      <% @items.each do |item| %>
+      <div class-"col-md-8 offset-md-1">
+        <ul class="card">
+          <%= link_to customer_item_path(item) do %>
+          <p><%= image_tag item.get_item_image(100,100) %></p>
+          <div class="card-body text-center">
+            <h4 class="card-title"><%= item.name %></h4>
+            <h4 class="card-text">￥<%= item.price %></h4>
+          </div>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

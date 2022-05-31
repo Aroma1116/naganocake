@@ -1,0 +1,17 @@
+
+<table class="table bordered">
+  <thead>
+    <tr>
+      <h2>ジャンル検索</h2>
+    </tr>
+  </thead>
+  <tbody>
+    <% genres.each do |genre| %>
+    <tr>
+      <td>
+        <%= link_to genre.genre, customer_items_path(id: genre.id) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
