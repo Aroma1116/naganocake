@@ -50,15 +50,6 @@ class Customer::OrdersController < ApplicationController
     end
   end
 
-  def complete
-  end
-
-  def index
-  end
-
-  def show
-  end
-
   private
 
   def order_params

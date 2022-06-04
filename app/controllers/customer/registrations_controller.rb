@@ -16,10 +16,6 @@ class Customer::RegistrationsController < Devise::RegistrationsController
     root_path
   end
   # POST /resource
-  # def create
-  #   super
-  # end
-
   # GET /resource/edit
   # def edit
   #   super
